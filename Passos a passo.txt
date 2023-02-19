@@ -1,0 +1,34 @@
+1° configure no arquivo pom o seguinte script:
+ <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+2° Caso não tenha feito, crie um package "Security" e a classe "Spring Security" extendendo da class WebSecurityConfigurerAdapter e com as anotação @Configuration @EnableWebSecurity
+
+3° Crie o metodo "configure" inicializando um objeto HttpSecurity. 
+Neste objeto vc instanciara os metodos: 
+ - csrf()
+ - disable()
+ - authorizeRequests()
+ - anyRequest()
+ - authenticated()
+ - and()
+ - httpBasic(); 
+
+*Obs: saiba mais no site https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/config/annotation/web/builders/HttpSecurity.html
+
+4° Crie o metodo "configureGlobal" inicializando um objeto AuthenticationManagerBuilder.
+Neste objeto vc instanciara os metodos: 
+  - inMemoryAuthentication()
+  - withUser("")
+  - password("{noop}")
+  - roles("");
+
+
+*Obs: saiba mais no site https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/config/annotation/web/builders/HttpSecurity.html
+
+*"noop" ajudar na fase de implementação quando não necessario a criptografia 
+
+
+5* Na hora de criar uma requisição verifique de verificar qual campo de autenticação e correto é basic auth e prencha com o dados corretos de user e passaword
